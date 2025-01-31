@@ -1,0 +1,27 @@
+public class Queue <E>  {
+
+public Queue(){
+
+}
+
+public <E> void getContent(){
+
+}
+
+public void setErsten(E Content){
+
+}
+
+public void enqueue(E pContent){
+
+}
+
+public void dequeue(){
+
+}
+
+public boolean isEmpty() {
+
+    return false;
+}
+}
