@@ -1,0 +1,16 @@
+public class Stack<E> {
+    public E tContent(){
+
+        return null;
+    }
+public void add (E content) {
+
+    }
+public void remove() {
+
+}
+public boolean isEmpty() {
+
+    return false;
+}
+}
