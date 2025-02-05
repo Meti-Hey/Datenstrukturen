@@ -1,6 +1,9 @@
 public class Liste<ContentType> {
+    private Node first;
+    private Node last;
+    private Node current;
 
-    public void liste (){
+    public Liste(){
 
     }
 
@@ -17,23 +20,26 @@ public class Liste<ContentType> {
     public void insert(ContentType pC){
 
     }
-    public void toFirst{
 
+    public void toFirst(){
+        first = last;
     }
-    public void toLast{
 
+    public void toLast(){
+        last = first;
     }
+
     public void remove(){
-
     }
+
     public boolean hasAccess(){
         return false;
-
     }
-    public ContentType getContent(){
 
+    public ContentType getContent(){
         return null;
     }
+
     public void setContent(ContentType pC){
 
     }
