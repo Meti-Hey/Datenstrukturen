@@ -1,51 +1,50 @@
 
-public class warteschlange<T> {
-    // Gib den ersten Kunden in der Warteschlange an
-    private Knoten erster;
+    public class warteschlange<T> {
+        // Gib den ersten Kunden in der Warteschlange an
+        private Node erster;
 
-    // Konstruktor
-    public warteschlange() {
-        erster = null;
-    }
+        // Konstruktor
+        public warteschlange() {
+            erster = null;
+        }
 
-    // Rückgabe des ersten Kunden
-    public T getErsten() {
-        return (T)erster.getZeigeAuf(); //erster.getZeigeAuf();
-    }
+        // Rückgabe des ersten Kunden
+        public T getErsten() {
 
-    // Setzen des ersten Kunden
-    public void setErsten(Knoten pKnoten) {
-        erster = pKnoten;
-    }
+            return (T)erster.getZeigeAuf(); //erster.getZeigeAuf();
+        }
 
-    // Hinzufügen eines Knoten am Ende der Warteschlange
-    public void einfuegen(T pInhalt) {
-        Knoten hilfe = new Knoten(pInhalt);
-        if (erster == null) {
-            // Wenn die Warteschlange leer ist, wird der Kunde der erste
-            erster = hilfe;
-        } else {
-            // Sonst zum letzten Kunden führen und den neuen anhängen
-            Knoten aktueller = erster;
+        // Setzen des ersten Kunden
+        public void setErsten(Node pNode) {
+            erster = pNode;
+        }
 
-            while (aktueller.getNachfolger() != null) {  // Schleife läuft so lange, wie es einen Nachfolger gibt
-                aktueller = aktueller.getNachfolger(); // Nachfolger wird zu aktueller
+        // Hinzufügen eines Node am Ende der Warteschlange
+        public void einfuegen(T pInhalt) {
+            Node hilfe = new Node(pInhalt);
+            if (erster == null) {
+                // Wenn die Warteschlange leer ist, wird der Kunde der erste
+                erster = hilfe;
+            } else {
+                // Sonst zum letzten Kunden führen und den neuen anhängen
+                Node aktueller = erster;
+
+                while (aktueller.getNachfolger() != null) {  // Schleife läuft so lange, wie es einen Nachfolger gibt
+                    aktueller = aktueller; // Nachfolger wird zu aktueller
+                }
+                aktueller.setNachfolger(hilfe.getNachfolger()); // Mit aktueller.setNachfolger(pKnoten) wird der neue Knoten (pKnoten) als Nachfolger des letzten Knoten gesetzt.
             }
-            aktueller.setNachfolger(hilfe); // Mit aktueller.setNachfolger(pKnoten) wird der neue Knoten (pKnoten) als Nachfolger des letzten Knoten gesetzt.
         }
-    }
 
-    // Entfernen des ersten Kunden aus der Warteschlange
-    public void entfernen() {
-        if (erster != null) {
-            // Der Nachfolger des ersten Kunden wird der neue erste
-            erster = erster.getNachfolger();
+        // Entfernen des ersten Kunden aus der Warteschlange
+        public void entfernen() {
+            if (erster != null) {
+                // Der Nachfolger des ersten Kunden wird der neue erste
+                erster = erster;
+            }
         }
-    }
 
-    // Überprüfen, ob die Warteschlange leer ist
-    public boolean gibLeer() {
-        return erster == null;
-    }
-}
-
+        // Überprüfen, ob die Warteschlange leer ist
+        public boolean gibLeer() {
+            return erster == null;
+        }
