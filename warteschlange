@@ -1,50 +1,55 @@
+//  !Warteschlange!  (Queue)
+public class Warteschlange <J> {
 
-    public class warteschlange<T> {
-        // Gib den ersten Kunden in der Warteschlange an
-        private Node erster;
+    // !erster! zeigt auf erstes Objekt in der Warteschlange
+    private Knoten erster;
 
-        // Konstruktor
-        public warteschlange() {
-            erster = null;
+    // !letzter! zeigt auf das letzte Objekt in der Warteschlange
+    private Knoten letzter;
+
+    // Falls nichsts im ersten oder letzern drin ist, dann setze = Null
+    public Warteschlange() {
+        erster = null;
+        letzter = null;
+    }
+
+    // Gibt den Inhalt des ersten Objekt in der Warteschlange zurück
+    public J gibErsten() {
+
+        return (J) erster.getInhalt();
+    }
+
+    // Entfernt das erste Objekt aus der Warteschlange
+    public void entfernen() {
+        Knoten aktuellerKunde = erster;
+
+        // Falls die Warteschlange nicht leer ist
+        if (erster != null) {
+            // Der erste Knoten wird entfernt, indem !erster! auf das nächste Objekt gesetzt wird
+            erster = aktuellerKunde.getNachfolger();
         }
+    }
 
-        // Rückgabe des ersten Kunden
-        public T getErsten() {
+    // Fügt ein neues Objekt am Ende der Warteschlange hinzu
+    public void einfuegen(J pInhalt) {
+        // Wir beginnen bei dem ersten Knoten
+        Knoten InhaltType = erster;
 
-            return (T)erster.getZeigeAuf(); //erster.getZeigeAuf();
+        // Wenn die Warteschlange leer ist
+        if (erster == null) {
+            // Der erste Knoten wird mit dem neuen Inhalt erstellt und gleichzeitig auch der letzte Knoten
+            erster = new Knoten(pInhalt);
+            letzter = erster;
         }
-
-        // Setzen des ersten Kunden
-        public void setErsten(Node pNode) {
-            erster = pNode;
-        }
-
-        // Hinzufügen eines Node am Ende der Warteschlange
-        public void einfuegen(T pInhalt) {
-            Node hilfe = new Node(pInhalt);
-            if (erster == null) {
-                // Wenn die Warteschlange leer ist, wird der Kunde der erste
-                erster = hilfe;
-            } else {
-                // Sonst zum letzten Kunden führen und den neuen anhängen
-                Node aktueller = erster;
-
-                while (aktueller.getNachfolger() != null) {  // Schleife läuft so lange, wie es einen Nachfolger gibt
-                    aktueller = aktueller; // Nachfolger wird zu aktueller
-                }
-                aktueller.setNachfolger(hilfe.getNachfolger()); // Mit aktueller.setNachfolger(pKnoten) wird der neue Knoten (pKnoten) als Nachfolger des letzten Knoten gesetzt.
+        else {
+            // Wenn die Warteschlange nicht leer ist, gehen wir zum letzten Knoten
+            while (InhaltType.getNachfolger() != null) {
+                InhaltType = InhaltType.getNachfolger();
             }
+            // Der Nachfolger des letzten Knotens wird auf den neuen Knoten gesetzt
+            InhaltType.setNachfolger(new Knoten<J>(pInhalt));
+            // Der neue Knoten wird zum letzten Knoten
+            letzter = InhaltType.getNachfolger();
         }
-
-        // Entfernen des ersten Kunden aus der Warteschlange
-        public void entfernen() {
-            if (erster != null) {
-                // Der Nachfolger des ersten Kunden wird der neue erste
-                erster = erster;
-            }
-        }
-
-        // Überprüfen, ob die Warteschlange leer ist
-        public boolean gibLeer() {
-            return erster == null;
-        }
+    }
+}
