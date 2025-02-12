@@ -1,19 +1,25 @@
-
-
 public class Kunde {
-    private String name;       // Name des Kunden
+    private Kunde nachfolger;
+    public String name;
 
-    // Standardkonstruktor
-    public Kunde(String pName) {
-        name = pName;
-    }
-    // Setzen des Namens
-    public void setName(String pName) {
-        name = pName;
+
+    public Kunde(String pName){
+        this.name = pName;
     }
 
-    // Rückgabe des Namens
-    public String getName() {
+    public void setNachfolger(Kunde pKunde) {
+        nachfolger = pKunde;
+    }
+
+    public Kunde getNachfolger() {
+        return nachfolger;
+    }
+
+    public void setName(String pName){
+        name= pName;
+    }
+
+    public String getName(){
         return name;
     }
 }
